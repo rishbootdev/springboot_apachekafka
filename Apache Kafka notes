@@ -1,0 +1,68 @@
+Kafka is horizontally scalable, fault tolerant and fast messaging sytem. It's a pub sub model in which various producers and consumers can write and read. It decouples source and target systems. Some of the key featurs are
+
+1. Scale to 100s of nodes
+2. Can handle millions of messages per second
+3. Low latency: as low as 2ms
+4. High throughput : 100s mb/s with 100ks of messages
+
+Use case of Kafka
+====================================
+
+Real time data streaming
+log aggregation
+Event sourcing
+Messaging
+Batch data processing
+
+Don not use Kafka for this:
+====================================
+
+Simple Request-Response Communication
+Small Scale Projects
+High latency Tolerance
+Monolithic Applications
+
+Kafka is written in Scala.
+
+In the architecture of Apache Kafka we have Spring boot producer microservice, Spring boot consumer microservice and the intermediate Kafka cluster for the messaging queue purposes
+
+Earlier Zookeeper was used for Kafka but now it is moving to Kafka Raft (KRaft)
+
+Kafka Topics
+================================================
+
+A topic is a specific stream of data. It is
+very similar to a table in a NoSQL database.
+Like tables in a NoSQL database, the topic is
+split into partitions that enable topic to be
+distributed across various nodes. Like primary
+keys in tables, topics have offsets per
+partitions. You can uniquely identify a
+message using its topic, partition and offset.
+Some topic names for Ecommerce Application
+would be:
+order-placed, order-shipped, inventory-updated
+payment-processed
+
+Topic Partitions
+========================================================
+
+Kafka topics are subdivided into partitions, which are the basic unit of parallelism in
+Kafka. Each partition is an ordered, immutable sequence of records.
+• Data within a partition is assigned a unique, incremental offset to track the order of
+messages.
+• Partitions allow for scalability, as data can be distributed across multiple brokers,
+enabling horizontal scaling and concurrent consumption by multiple consumers.
+
+Partition Offset
+==================
+Offset is a unique identifier assigned to
+each record within a partition. Offsets are
+sequential integers that mark the position
+of a message in a partition. Each record
+within a partition has a unique offset,
+starting from 0.
+Consumers can specify where they want to
+start reading by providing an offset (e.g.,
+the most recent offset, or offset 0 to read
+from the beginning).
